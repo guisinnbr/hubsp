@@ -9,432 +9,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        /* Estilos gerais */
-        :root {
-            --cor-primaria: #8000ff;
-            --cor-fundo: #ffffff;
-            --cor-texto: #333333;
-            --cor-borda: #dddddd;
-            --cor-hover: #f1f1f1;
-        }
-
-        [data-tema="escuro"] {
-            --cor-primaria: #9c27b0;
-            --cor-fundo: #1e1e1e;
-            --cor-texto: #e0e0e0;
-            --cor-borda: #444;
-            --cor-hover: #2e2e2e;
-        }
-
-        [data-tema="azul"] {
-            --cor-primaria: #2196f3;
-            --cor-fundo: #e3f2fd;
-            --cor-texto: #0d47a1;
-            --cor-borda: #90caf9;
-            --cor-hover: #bbdefb;
-        }
-
-        [data-tema="verde"] {
-            --cor-primaria: #4caf50;
-            --cor-fundo: #e8f5e9;
-            --cor-texto: #1b5e20;
-            --cor-borda: #a5d6a7;
-            --cor-hover: #c8e6c9;
-        }
-
-        [data-tema="laranja"] {
-            --cor-primaria: #ff9800;
-            --cor-fundo: #fff3e0;
-            --cor-texto: #e65100;
-            --cor-borda: #ffcc80;
-            --cor-hover: #ffe0b2;
-        }
-
-        [data-tema="rosa"] {
-            --cor-primaria: #e91e63;
-            --cor-fundo: #fce4ec;
-            --cor-texto: #880e4f;
-            --cor-borda: #f48fb1;
-            --cor-hover: #f8bbd0;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            background-color: var(--cor-fundo);
-            color: var(--cor-texto);
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        h1 {
-            color: var(--cor-primaria);
-            text-align: center;
-            padding-top: 80px; /* Espaço para o menu fixo */
-        }
-
-        button {
-            background-color: var(--cor-primaria);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin: 5px;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            background-color: var(--cor-fundo);
-        }
-
-        th, td {
-            border: 1px solid var(--cor-borda);
-            padding: 12px;
-            text-align: center;
-            color: var(--cor-texto);
-        }
-
-        th {
-            background-color: var(--cor-primaria);
-            color: white;
-        }
-
-        tr:nth-child(even) {
-            background-color: var(--cor-hover);
-        }
-
-        tr:hover {
-            background-color: var(--cor-hover);
-        }
-
-        tr.intervalo {
-            background-color: var(--cor-borda);
-            font-weight: bold;
-        }
-
-        .cadernos, .links-uteis, .sobre, .agradecimento, .contato, .notas {
-            margin-top: 30px;
-            padding: 25px;
-            background-color: var(--cor-hover);
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .cadernos:hover, .links-uteis:hover, .sobre:hover, .agradecimento:hover, .contato:hover, .notas:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .cadernos h2, .links-uteis h2, .sobre h2, .agradecimento h2, .contato h2, .notas h2 {
-            color: var(--cor-primaria);
-        }
-
-        .cadernos ul, .links-uteis ul, .sobre ul, .agradecimento ul, .contato ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .cadernos li, .links-uteis li, .sobre li, .agradecimento li, .contato li {
-            padding: 10px;
-            border-bottom: 1px solid var(--cor-borda);
-            color: var(--cor-texto);
-        }
-
-        .cadernos li:last-child, .links-uteis li:last-child, .sobre li:last-child, .agradecimento li:last-child, .contato li:last-child {
-            border-bottom: none;
-        }
-
-        .links-uteis a, .sobre a, .contato a {
-            color: var(--cor-primaria);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .links-uteis a:hover, .sobre a:hover, .contato a:hover {
-            color: #6a1b9a;
-            text-decoration: underline;
-        }
-
-        /* Ícones */
-        .links-uteis i, .contato i {
-            margin-right: 10px;
-            color: var(--cor-primaria);
-        }
-
-        /* Botão de Voltar ao Topo */
-        #voltarTopo {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: var(--cor-primaria);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            display: none; /* Esconder inicialmente */
-            transition: background-color 0.3s, transform 0.2s;
-        }
-
-        #voltarTopo:hover {
-            background-color: #6a1b9a;
-            transform: scale(1.1);
-        }
-
-        /* Footer */
-        footer {
-            margin-top: 50px;
-            padding: 20px;
-            text-align: center;
-            background-color: var(--cor-hover);
-            border-radius: 10px;
-            color: var(--cor-texto);
-        }
-
-        footer a {
-            color: var(--cor-primaria);
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Modo de Impressão */
-        @media print {
-            body * {
-                visibility: hidden;
-            }
-            table, table * {
-                visibility: visible;
-            }
-            table {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
-                border-collapse: collapse;
-            }
-            th, td {
-                border: 1px solid #000;
-                padding: 8px;
-            }
-        }
-
-        /* Responsividade */
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 24px;
-            }
-            button {
-                width: 100%;
-                margin: 5px 0;
-            }
-            table {
-                display: block;
-                overflow-x: auto;
-            }
-            th, td {
-                min-width: 120px;
-            }
-            .cadernos ul, .links-uteis ul, .sobre ul, .agradecimento ul, .contato ul {
-                padding-left: 20px;
-            }
-            .cadernos li, .links-uteis li, .sobre li, .agradecimento li, .contato li {
-                padding: 8px;
-                font-size: 14px;
-            }
-        }
-
-        @media (max-width: 400px) {
-            th, td {
-                padding: 8px;
-                font-size: 14px;
-            }
-            .cadernos li, .links-uteis li, .sobre li, .agradecimento li, .contato li {
-                padding: 6px;
-                font-size: 12px;
-            }
-        }
-
-        /* Seletor de Temas */
-        .seletor-temas {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .seletor-temas button {
-            background: none;
-            border: 2px solid transparent;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin: 5px;
-            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-        }
-
-        .seletor-temas button:hover {
-            border-color: white;
-        }
-
-        .seletor-temas button[onclick*="padrao"] {
-            background-color: #8000ff; /* Roxo */
-            color: white;
-        }
-
-        .seletor-temas button[onclick*="escuro"] {
-            background-color: #1e1e1e; /* Preto */
-            color: white;
-        }
-
-        .seletor-temas button[onclick*="azul"] {
-            background-color: #2196f3; /* Azul */
-            color: white;
-        }
-
-        .seletor-temas button[onclick*="verde"] {
-            background-color: #4caf50; /* Verde */
-            color: white;
-        }
-
-        .seletor-temas button[onclick*="laranja"] {
-            background-color: #ff9800; /* Laranja */
-            color: white;
-        }
-
-        .seletor-temas button[onclick*="rosa"] {
-            background-color: #e91e63; /* Rosa */
-            color: white;
-        }
-
-        /* Menu de Navegação */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: var(--cor-primaria);
-            padding: 10px;
-            z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: var(--cor-hover);
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1001;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-
-        .modal-conteudo {
-            background-color: var(--cor-fundo);
-            margin: 15% auto;
-            padding: 20px;
-            border-radius: 10px;
-            width: 80%;
-            max-width: 500px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .fechar {
-            color: var(--cor-texto);
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .fechar:hover {
-            color: var(--cor-primaria);
-        }
-
-        /* Notas */
-        .notas textarea {
-            width: 100%;
-            height: 100px;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid var(--cor-borda);
-            resize: vertical;
-        }
-
-        /* Menu de informações responsivo */
-        #menuIcon {
-            display: none; /* Esconde o ícone do menu em telas maiores */
-            font-size: 24px;
-            cursor: pointer;
-            color: white;
-        }
-
-        @media (max-width: 768px) {
-            #menuIcon {
-                display: block; /* Mostra o ícone do menu em telas menores */
-            }
-
-            nav ul {
-                display: none; /* Esconde o menu em telas menores */
-                flex-direction: column;
-                background-color: var(--cor-primaria);
-                padding: 10px;
-            }
-
-            nav ul.active {
-                display: flex; /* Mostra o menu quando ativo */
-            }
-        }
-    </style>
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body data-tema="padrao">
-    <!-- Menu de Navegação -->
-    <nav>
-        <div id="menuIcon" onclick="toggleMenu()">☰</div>
-        <ul id="menuList">
-            <li><a href="#horario">Horário</a></li>
-            <li><a href="#cadernos">Cadernos</a></li>
-            <li><a href="#links-uteis">Links Úteis</a></li>
-            <li><a href="#sobre">Sobre</a></li>
-            <li><a href="#contato">Contato</a></li>
-        </ul>
-    </nav>
+<!-- Menu de Navegação -->
+<nav>
+    <!-- Ícone do menu hamburguer -->
+    <div id="menuIcon" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+    </div>
+    <!-- Lista de links -->
+    <ul id="menuList">
+        <li><a href="#horario">Horário</a></li>
+        <li><a href="#cadernos">Cadernos</a></li>
+        <li><a href="#links-uteis">Links Úteis</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#contato">Contato</a></li>
+    </ul>
+</nav>
 
     <h1 id="horario">Horário de Aulas 1º C</h1>
     <div class="seletor-temas">
@@ -458,6 +51,7 @@
         </div>
     </div>
 
+    <!-- Tabela de Horários -->
     <table>
         <thead>
             <tr>
@@ -524,6 +118,7 @@
         </tbody>
     </table>
 
+    <!-- Seção de Cadernos -->
     <div class="cadernos" id="cadernos">
         <h2>Cadernos por Dia</h2>
         <ul>
@@ -535,6 +130,7 @@
         </ul>
     </div>
 
+    <!-- Seção de Notas -->
     <div class="notas" id="notas">
         <h2>Minhas Notas</h2>
         <label for="nota1">Nota 1:</label>
@@ -544,9 +140,11 @@
         <label for="nota3">Nota 3:</label>
         <input type="number" id="nota3" min="0" max="10">
         <button onclick="calcularMedia()">Calcular Média</button>
+        <button onclick="limparNotas()">Limpar Notas</button>
         <p id="resultado-media"></p>
     </div>
 
+    <!-- Seção de Links Úteis -->
     <div class="links-uteis" id="links-uteis">
         <h2>Links Úteis</h2>
         <ul>
@@ -557,17 +155,20 @@
         </ul>
     </div>
 
+    <!-- Seção Sobre -->
     <div class="sobre" id="sobre">
         <h2>Sobre</h2>
         <p>Este site foi desenvolvido para ajudar os alunos do 1º C a organizarem seus horários e cadernos de forma prática e eficiente.</p>
         <p>Desenvolvido por <a href="https://github.com/guisinnbr" target="_blank">guisinnbr</a>.</p>
     </div>
 
+    <!-- Seção de Agradecimento -->
     <div class="agradecimento">
         <h2>Obrigado!</h2>
         <p>Obrigado por utilizar o site. Esperamos que ele ajude a organizar seus estudos!</p>
     </div>
 
+    <!-- Seção de Contato -->
     <div class="contato" id="contato">
         <h2>Contato e Repositório</h2>
         <ul>
@@ -576,6 +177,7 @@
         </ul>
     </div>
 
+    <!-- Footer -->
     <footer>
         <p>© 2025 Horário de Aulas 1º C. Desenvolvido por <a href="https://github.com/guisinnbr" target="_blank">guisinnbr</a>.</p>
     </footer>
@@ -583,75 +185,7 @@
     <!-- Botão de Voltar ao Topo -->
     <button id="voltarTopo" onclick="voltarAoTopo()" title="Voltar ao topo">↑</button>
 
-    <script>
-        // Alternar temas
-        function mudarTema(tema) {
-            const body = document.body;
-            body.setAttribute("data-tema", tema);
-            localStorage.setItem("tema", tema);
-        }
-
-        // Carregar tema salvo
-        const temaSalvo = localStorage.getItem("tema");
-        if (temaSalvo) {
-            document.body.setAttribute("data-tema", temaSalvo);
-        }
-
-        // Botão de Voltar ao Topo
-        window.onscroll = function() {
-            const botao = document.getElementById("voltarTopo");
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                botao.style.display = "block";
-            } else {
-                botao.style.display = "none";
-            }
-        };
-
-        function voltarAoTopo() {
-            document.body.scrollTop = 0; // Para Safari
-            document.documentElement.scrollTop = 0; // Para outros navegadores
-        }
-
-        // Modal
-        function abrirModal() {
-            document.getElementById("modal").style.display = "block";
-        }
-
-        function fecharModal() {
-            document.getElementById("modal").style.display = "none";
-        }
-
-        // Fechar modal ao clicar fora
-        window.onclick = function(event) {
-            const modal = document.getElementById("modal");
-            if (event.target === modal) {
-                modal.style.display = "none";
-            }
-        };
-
-        // Copiar horário (apenas texto)
-        function copiarHorario() {
-            const linhas = [];
-            const tabela = document.querySelector("table");
-            for (const linha of tabela.rows) {
-                const celulas = Array.from(linha.cells).map(celula => celula.innerText);
-                linhas.push(celulas.join("\t")); // Usar tabulação para separar colunas
-            }
-            const texto = linhas.join("\n"); // Usar quebra de linha para separar linhas
-            navigator.clipboard.writeText(texto)
-                .then(() => alert("Horário copiado para a área de transferência!"))
-                .catch(() => alert("Erro ao copiar o horário."));
-        }
-
-        // Calcular média
-        function calcularMedia() {
-            const nota1 = parseFloat(document.getElementById("nota1").value);
-            const nota2 = parseFloat(document.getElementById("nota2").value);
-            const nota3 = parseFloat(document.getElementById("nota3").value);
-            const media = (nota1 + nota2 + nota3) / 3;
-            document.getElementById("resultado-media").innerText = `Média: ${media.toFixed(2)}`;
-        }
-
-    </script>
+    <!-- JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
